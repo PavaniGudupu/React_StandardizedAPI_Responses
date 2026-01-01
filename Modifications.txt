@@ -1,0 +1,64 @@
+Standardized API Response Envelope
+
+ONE fixed response format that ALL your APIs return.
+
+ex:
+res.json(products);
+res.json({ message: "Product added successfully", product: result });
+res.status(500).json({ error: error.message });
+
+
+Why this is a problem ❗
+Frontend must handle different response formats
+Frontend dev will ask:
+“Which key should I read? products? message? error?”
+
+✅ Solution: API Response Envelope
+We wrap every response inside a common structure.
+Fixed format:
+{
+  "success": true,
+  "response": {},
+  "failure": false,
+  "reason": null
+}
+
+Now frontend always knows:
+  - Check success
+  - Read data from response
+  - Read error from reason
+
+
+
+
+✅ STEP 1: Create Response Utility File
+📁 utils/apiResponse.js
+
+//function with an response object
+export const success = (data) => ({
+  success: true,
+  response: data,
+  failure: false,
+  reason: null
+});
+
+export const failure = (reason) => ({
+  success: false,
+  response: null,
+  failure: true,
+  reason
+});
+
+
+
+✅ STEP 2: Use It in Your Routes
+// import { success, failure } from "./utils/apiResponse.js";
+
+
+
+return res.json(success(products));
+or
+
+
+return res.json(failure(error.message));
+
