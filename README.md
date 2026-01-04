@@ -1,6 +1,7 @@
 React_StandardizedAPI_Responses
 
 This repository provides a backend API for managing products and categories in an inventory system. It is built using Express.js and follows a modular structure with standardized API responses.
+<img width="1919" height="1026" alt="Screenshot 2026-01-04 170636" src="https://github.com/user-attachments/assets/a51be382-e86b-40ce-9e86-976e58e8a521" />
 
 🚀 Features
 
